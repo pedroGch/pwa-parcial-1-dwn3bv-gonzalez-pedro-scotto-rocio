@@ -1,0 +1,214 @@
+/*armar clases para colores personalizados*/
+body {
+    font-family: 'Catamaran', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+::selection {
+    background-color: #f1e1ff;
+}
+
+.strong-sin-estilos {
+    text-decoration: none;
+}
+
+.bg-violet-gradient {
+    background: linear-gradient(130deg, #4a2980, #cc99cc);
+    background-color: #4a2980;
+}
+
+.bg-dark-violet {
+    background-color: #1f0942;
+}
+
+.bg-light-violet {
+    background-color: #f1e1ff;
+}
+
+.bg-green {
+    background-color: #64ffda;
+}
+
+.border-dark-violet {
+    border: #1f0942 solid 2px;
+}
+
+.btn-violet-gradient {
+    background: linear-gradient(130deg, #4a2980, #8159c3);
+    background-color: #4a2980;
+    color: whitesmoke;
+}
+
+.btn:hover {
+    background: linear-gradient(160deg, #442575, #946bd4);
+    color: whitesmoke;
+}
+
+.text-dark-violet {
+    color: #1f0942;
+}
+
+.shadow-sm-personalizada {
+
+    box-shadow: 0 .125rem .25rem red;
+}
+
+#logo {
+    width: 120px;
+    height: 34px;
+}
+
+
+a.nav-link:hover {
+    
+    color: #64ffda !important;
+    font-weight: 500;
+}
+h1 {
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 800;
+    color: #1f0942;
+}
+
+h2 {
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 800;
+    color: #1f0942;
+}
+
+a {
+    text-decoration: none;
+}
+
+#container-formulario {
+    justify-content: center;
+
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #1f0942;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(122, 70, 207, 0.25);
+}
+
+.form-select:focus {
+    border-color: #1f0942;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(122, 70, 207, 0.25);
+}
+
+option:hover {
+    background-color: #f1e1ff !important;
+}
+
+.form-check-input:checked {
+    background-color: #64ffda;
+    border-color: #64ffda;
+
+}
+
+.iconos-redes svg:hover {
+    fill: #64ffda;
+}
+
+
+footer>div {
+    flex-direction: column;
+}
+
+.datos-footer {
+    text-align: center;
+    padding: 2rem 0rem;
+
+}
+
+.datos-footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+.modal {
+    height: 90%;
+}
+
+.modal-body {
+    height: 70%;
+    overflow-y: scroll;
+}
+
+#tarjetaDatos{
+    display: none;
+}
+
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    #logo {
+        width: 200px;
+        height: 57px;
+    }
+
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+
+    footer>div {
+        flex-direction: row;
+    }
+
+    .datos-footer {
+        text-align: left;
+    }
+
+    .datos-footer ul {
+        list-style-type: none;
+    }
+}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+    #container-formulario {
+        justify-content: center;
+
+    }
+
+    #seccion-suscripcion {
+        background-image: url("../img/background-form-lg.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {
+
+    #seccion-suscripcion {
+        background-image: url("../img/background-form.jpg");
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+
+    #container-formulario {
+        justify-content: start;
+
+    }
+
+    header {
+        background: linear-gradient(90deg, #BCAEC8, #DEC9E8);
+    } 
+    #carouselExampleCaptions {
+        max-width: 1920px;
+        
+    }
+}

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programacion I - Parcial II</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700;800&family=Nunito+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-violet-gradient text-light ">
+        <div class="container-xl container-fluid ">
+            <div class="align-self-start ">
+                <a class="navbar-brand mt-2 p-2 " href="./index.html">
+                    <img src="./img/logo.png" alt="Logo Dhara" class="d-inline-block align-text-top m-2" id="logo">
+                    <h1 class="d-none">Dhara</h1>
+                </a>
+            </div>
+
+            <div class="align-self-end d-flex ">
+                <div class="mt-3 mt-md-4 mt-lg-2 ">
+
+                    <button type="button" class="btn text-light position-relative" data-bs-toggle="modal"
+                        data-bs-target="#modalCarrito">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            class="bi bi-cart-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-green text-dark"
+                            id="monstrarCantidad">
+                            0
+                            <span class="visually-hidden">Productos en el carrito</span>
+                        </span>
+                    </button>
+                </div>
+                <div>
+                    <button class="navbar-toggler p-3 mt-2 ms-3" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon navbar-dark"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end text-end p-2" id="navbarNavAltMarkup">
+                        <div class="navbar-nav ">
+                            <a class="nav-link active text-light" aria-current="page" href="./index.html">Inicio</a>
+                            <a class="nav-link text-light" href="#nosotros">Nosotros</a>
+                            <a class="nav-link text-light" href="#productos">Productos</a>
+                            <a class="nav-link text-light" href="#tienda">Tienda</a>
+                            <a class="nav-link text-light" href="#galeria">Galería</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </nav>
+
+    <header class="mx-auto d-flex justify-content-center p-4">
+        <h2>Checkout</h2>
+    </header>
+
+    <main>
+
+        <section id="medios-pago" class="py-5">
+            <div class="container">
+                <div id="container-formulario" class="row  mx-auto py-5 d-flex">
+                    <div class="col-sm-12 col-lg-7 d-flex">
+                        <h2>Método de pago</h2>
+                    </div>
+                    <div class="col-sm-12 col-lg-7 d-flex flex-column">
+                        <div class="form-check">
+                            <input class="form-check-input mt-4" type="radio"  onclick="ocultarMostrarTarjeta('ocultar');" name="flexRadioDefault"
+                                id="flexRadioMercadoPago" checked>
+                            <label class="form-check-label" for="flexRadioMercadoPago">
+                                Mercado Pago
+                            </label>
+                            <img src="./img/pago-mp.jpg" alt="Mercado Pago">
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input mt-4" type="radio"  onclick="ocultarMostrarTarjeta('mostrar');" name="flexRadioDefault"
+                                id="flexRadioTarjetaCredito">
+                            <label class="form-check-label" for="flexRadioTarjetaCredito">
+                                Tarjeta de Crédito
+                            </label>
+                            <img src="./img/pago-visa.jpg" alt="Visa">
+                            <img src="./img/pago-master.jpg" alt="Master Card">
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input mt-4" type="radio"  onclick="ocultarMostrarTarjeta('ocultar');" name="flexRadioDefault"
+                                id="flexRadioEfectivo">
+                            <label class="form-check-label" for="flexRadioEfectivo">
+                                Efectivo / Transferencia
+                            </label>
+                            <img src="./img/pago-facil.jpg" alt="Mercado Pago">
+                            <img src="./img/pago-rapi.jpg" alt="Mercado Pago">
+                            <img src="./img/pago-transfer.jpg" alt="Mercado Pago">
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    <div class="container" id="tarjetaDatos">
+                        <h3>Ingresá los datos de tu tarjeta</h3>
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="form-label" for="inputtarjeta">Número *</label>
+                                <input autocomplete="off" onchange="quitarError(this)" class="form-control border-dark-violet" type="number" name="inputtarjeta"
+                                    id="inputtarjeta" placeholder="xxxx xxxx xxxx xxxx" aria-describedby="d-tarjeta"
+                                >
+                                <span id="text"></span>
+                                <p class="form-text" id="d-tarjeta">Sin espacios</p>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label" for="inputvto">Vencimiento *</label>
+                                <input autocomplete="off" onchange="quitarError(this)" class="form-control border-dark-violet" type="number" name="inputvto"
+                                    id="inputvto" placeholder="xx / xx" aria-describedby="d-vencimiento" minlength="5">
+                                <span id="text"></span>
+                                <p class="form-text" id="d-vencimiento">Respetando el formato mes/año. Ej: 03/23</p>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label" for="inputCodigo">Cod. de Seguridad *</label>
+                                <input autocomplete="off" onchange="quitarError(this)" class="form-control border-dark-violet" type="number" name="inputCodigo"
+                                    id="inputCodigo" placeholder="XXX" aria-describedby="d-codigo" minlength="3">
+                                <span id="text"></span>
+                            </div>
+                            <div class="col-12 pt-4">
+                                <label for="inputNombreTarjeta" class="form-label">Nombre como figura en la tarjeta *</label>
+                            <input autocomplete="off" type="text" onchange="quitarError(this)" class="form-control border-dark-violet" id="inputNombreTarjeta"
+                                name="inputNombreTarjeta" placeholder="Juan">
+                            <span id="text"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 border-bottom border-2 py-2"></div>
+                </div>
+
+                <div class="col-12 col-lg-7 col-xxl-7">
+                    <form class="row g-3" action="#" method="post"  autocomplete="off">
+                        <div class="col-sm-12 col-lg-7 d-flex mt-md-4">
+                            <h2>Datos para facturación</h2>
+                        </div>
+                        <div class="col-xxl-6">
+                            <label for="inputNombre" class="form-label">Nombre *</label>
+                            <input autocomplete="off" type="text" onchange="quitarError(this)" class="form-control border-dark-violet" id="inputNombre"
+                                name="inputNombre" placeholder="Juan" >
+                            <span id="text"></span>
+                        </div>
+                        <div class="col-xxl-6">
+                            <label for="inputApellido" class="form-label">Apellido *</label>
+                            <input type="text" onchange="quitarError(this)" class="form-control border-dark-violet" id="inputApellido"
+                                name="inputApellido" placeholder="Pérez" >
+                            <span id="text"></span>
+                        </div>
+                        <div class="col-xxl-6">
+                            <label class="form-label" for="inputdni">DNI *</label>
+                            <input onchange="quitarError(this)" class="form-control border-dark-violet" type="number" name="inputdni" id="inputdni"
+                                placeholder="12345678" aria-describedby="d-dni" minlength="8">
+                            <span id="text"></span>
+                            <p class="form-text" id="d-dni">Sin puntos ni espacios</p>
+                        </div>
+                        <div class="col-xxl-6">
+                            <label for="inputEmail" class="form-label">Email *</label>
+                            <input type="email" onchange="quitarError(this)" class="form-control border-dark-violet" id="inputEmail"
+                                name="inputEmail" aria-describedby="d-email">
+                            <span id="text"></span>
+                            <p class="form-text" id="d-email">emaildeejemplo@hotmail.com</p>
+                        </div>
+                        <div class="col-xxl-6">
+                            <label class="form-label" for="inputelefono">Teléfono *</label>
+                            <input onchange="quitarError(this)" class="form-control border-dark-violet" type="number" name="inputelefono"
+                                id="inputelefono" placeholder="+ 54 9 11 xxxx xxxx ">
+                            <span id="text"></span>
+                        </div>
+                        <div class="col-12 border-bottom border-2 py-2"></div>
+                        <div class="col-sm-12 col-lg-7 d-flex mt-md-4">
+                            <h2>Datos de envío: </h2>
+                            <h3 class="ps-2">Calle 144 N° 1121 La Plata</h3>
+                        </div>
+                        <div>
+                            <div class="col-sm-12 col-lg-7 d-flex flex-column">
+                                <div class="form-check">
+                                    <input class="form-check-input mt-4" onclick="mostrarCostoEnvio(200)" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Correo Argentino: $200
+                                    </label>
+                                    <img src="./img/correo-arg.jpg" alt="Correo Argentino">
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input mt-4" onclick="mostrarCostoEnvio(500)" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2" >
+                                    <label class="form-check-label"  for="flexRadioDefault2">
+                                        Correo Privado: $500
+                                    </label>
+                                    <img src="./img/correo-priv.jpg" alt="Correo Privado">
+
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input mt-4" onclick="mostrarCostoEnvio(0)" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1" checked>
+                                    <label class="form-check-label"  for="flexRadioDefault1">
+                                        Acordar con el vendedor: $0
+                                    </label>
+                                    <img src="./img/envio-acordar.jpg" alt="  Acordar con el vendedor">
+                                </div>
+                            </div>
+
+                            <div class="col-12 border-bottom border-2 py-2"></div>
+                            <div class="container py-5">
+                                <div>
+                                    <h2>Resúmen de tu compra</h2>
+                                    <ul id="listaCarrito">
+
+                                    </ul>
+                                    <p class="h6"><b>Cantidad de productos: </b><span id="tuTotalCantidad"></span>
+                                    </p>
+                                    <div class="col-12 border-bottom border-2 py-2 mb-2"></div>
+                                    <p class="h6"><b>Sub Total:</b> $ <span id="valorSubtotalCompra"></span></p>
+                                    <div class="col-12 border-bottom border-2 py-2 mb-2"></div>
+                                    <p class="h6"><b>Costo de Envío:</b> $ <span id="valorEnvio"></span> </p>
+                                    <div class="col-12 border-bottom border-2 py-2 mb-2"></div>
+                                    <p class="h6"><b>Total: </b>$ <span id="valorTotalCompra"></span></p>
+                                </div>
+
+                            </div>
+
+                            <div class="col-xxl-12">
+                                <input type="submit" onclick="validarForm();" class="btn  shadow-sm btn-violet-gradient" value="Finalizar compra">
+                            </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Modal Carrito-->
+        <div class=" modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-fullscreen p-5">
+                <div class="row modal-content">
+                    <div class="col-12 modal-header">
+                        <h2 class="modal-title fw-bold" id="modalCarritoLabel">Carrito</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!--div que contiene todos los productos-->
+                    <div class="col-12 modal-body d-flex flex-column" id="contenedorItemCarrito">
+                        <!--div de cada producto-->
+
+                    </div>
+                    <div class="row mx-3">
+                        <div class="col-6">
+                            <h2>Cantidad de productos: <span id="tuTotalCantidad"></span></h2>
+                        </div>
+                        <div class="col-6">
+                            <h2>Precio Total: $ <span class="tuTotal"></span></h2>
+                        </div>
+                    </div>
+
+                    <div class="col-12 modal-footer">
+                        <div>
+                            <button type="button" class="btn  shadow-sm btn-violet-gradient w-100"
+                                id="vaciarCarrito">Vaciar carrito</button>
+                        </div>
+                        <div>
+                            <button type="button" class="btn  shadow-sm btn-violet-gradient w-100">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class=" modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-fullscreen p-5">
+                <div class="row modal-content">
+                    <div class="col-12 modal-header">
+                        <h2 class="modal-title fw-bold" id="exampleModalLabel">Imprimibles</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="col-12 modal-body d-flex" id="contenedorDescripLargo">
+
+
+                    </div>
+                    <div class="col-12 modal-footer">
+
+
+                        <div>
+                            <button type="button" class="btn  shadow-sm btn-violet-gradient w-100">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </main>
+
+
+
+
+    <footer class="bg-dark-violet py-lg-3">
+        <div class="row container text-light mx-auto p-3 d-flex">
+            <div class="col-12 col-lg-4 p-2"><img class="d-block mx-auto img-fluid" src="./img/foto-ro.jpg"
+                    alt="foto Rocío">
+            </div>
+            <div class="col-12 col-lg-4 align-self-center datos-footer text-center">
+                <ul>
+                    <br><b>Alumnos:</b> </br>Pedro Gonzalez Chavez - Rocío Scotto</li>
+                    <li><b>Email:</b> pedro.gonzalez@davinci.edu.ar</br> rocio.scotto@davinci.edu.ar</li>
+                    <li><b>Comisión:</b> DWN2BV - 2022</li>
+                    <li><b>Materia:</b> Programación I - <b>Parcial:</b> II</li>
+                    <li><b>Prof:</b> Fabrizio Carlassara</li>
+                </ul>
+                <div class="text-center">
+                    <a href="https://github.com/pedroGch/p1-parcial-2-dwn2b">
+                        <div class="github"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                fill="whitesmoke" class="bi bi-github" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                            </svg></div> <span class="d-none">Github</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-12 col-lg-4 p-2">
+                <div class=""><img class="d-block mx-auto img-fluid align-self-center" src="./img/foto-pedro.jpg"
+                        alt="foto Pedro">
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
+        async></script>
+
+    <script src="./js/CarritoClass.js"></script>
+    <script src="./js/ProductoClass.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="./js/checkout.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHARA Indumentaria</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700;800&family=Nunito+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-violet-gradient text-light ">
+        <div class="container-xl container-fluid ">
+            <div class="align-self-start ">
+                <a class="navbar-brand mt-2 p-2 " href="/index.html">
+                    <img src="./img/logo.png" alt="Logo Dhara" class="d-inline-block align-text-top m-2" id="logo">
+                    <h1 class="d-none">Dhara</h1>
+                </a>
+            </div>
+
+            <div class="align-self-end d-flex ">
+                <div class="mt-3 mt-md-4 mt-lg-2 ">
+
+                    <button type="button" class="btn text-light position-relative" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            class="bi bi-cart-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-green text-dark" id="monstrarCantidad" >
+                            0
+                            <span class="visually-hidden">Productos en el carrito</span>
+                        </span>
+                    </button>
+                </div>
+                <div>
+                    <button class="navbar-toggler p-3 mt-2 ms-3" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon navbar-dark"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end text-end p-2" id="navbarNavAltMarkup">
+                        <div class="navbar-nav ">
+                            <a class="nav-link active text-light" aria-current="page" href="/index.html">Inicio</a>
+                            <a class="nav-link text-light" href="#nosotros">Nosotros</a>
+                            <a class="nav-link text-light" href="#productos">Productos</a>
+                            <a class="nav-link text-light" href="#tienda">Tienda</a>
+                            <a class="nav-link text-light" href="#galeria">Galería</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </nav>
+
+    <header class="mx-auto d-flex justify-content-center">
+    
+    </header>
+
+    <main>
+        <!-- sección tienda-->
+        <section id="tienda" class="my-lg-5">
+            <div class="row container mx-auto mt-4">
+                <div class="col-12 my-4 text-center d-flex">
+                    <div class="mx-auto d-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#1f0942"
+                            class="bi bi-bag-heart-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5ZM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1Zm0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
+                        </svg>
+                        <h2 class="ps-3">Tienda</h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="col-12 my-3">
+                        <label for="tipo-producto"><b class="text-dark-violet fs-4">Categoría:</b></label>
+                        <select name="tipo-producto" id="tipo-producto">
+                            <option value="todas">Todas</option>
+                            <option value="mandala">Mandala</option>
+                            <option value="infantil">Infantil</option>
+                            <option value="zentangle">Zentangle</option>
+                        </select>
+                    </div>
+                    <div class="col-12 my-3" id="contenedorOferta"></div>
+                    <div class="row d-flex g-3" id="productosTienda">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- sección galeria masonry-->
+        <section id="galeria" class="mt-5 bg-light-violet p-5 px-0 px-lg-3">
+            <div class="col-12 my-4 text-center d-flex">
+                <div class="d-flex mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#1f0942"
+                        class="bi bi-camera-fill" viewBox="0 0 16 16">
+                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                        <path
+                            d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" />
+                    </svg>
+                    <h2 class="ps-3">Galería Informativa</h2>
+                </div>
+            </div>
+            <div class="row mx-auto mt-5" style=" max-width: 1180px" data-masonry='{"percentPosition": true }'>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm">
+                        <img src="./img/galeria-1.jpg" alt="piedras y arena en jardin zen">
+                        <div class="card-body">
+                            <h3 class="card-title fs-5 fw-semibold">¿Qué significa meditar?</h3>
+                            <p class="card-text">Meditar es la capacidad de focalizar nuestra atención en un solo
+                                pensamiento y abstraernos del
+                                entorno.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm">
+
+                        <img src="./img/galeria-3.jpg" alt="dibujo abstracto coloreado en un papel">
+                        <div class="card-body">
+                            <h3 class="card-title fs-5 fw-semibold">Beneficios del dibujo zentangle</h3>
+                            <p class="card-text"><strong class="strong-sin-estilos">
+                                    Fomentar la creatividad, promover la confianza en sí mismo o
+                                    reducir trastornos de atención y estrés son algunos de los beneficios que tiene la
+                                    práctica del Zentangle.
+                                </strong></p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm">
+
+                        <img src="./img/galeria-2.jpg" alt="mujer meditando sentada en el pasto">
+                        <div class="card-body">
+                            <h3 class="card-title fs-5 fw-semibold">Meditar con mandalas</h3>
+                            <p class="card-text">A nivel físico, meditando con mandalas
+                                experimentamos el aquietamiento mental,
+                                cesa el ruido externo para comenzar a darle
+                                paso a la voz interna. <em>
+                                    Vivenciamos lo que
+                                    llamamos un estado de armonía, de vuelta al
+                                    eje.
+                                </em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title fs-5 fw-semibold">Redes neuronales</h3>
+                            <p class="card-text"><strong>
+                                    La nueva relación que se crea entre grupos de neuronas da como
+                                    resultado el aprendizaje.
+                                </strong>Las redes neuronales se desarrollan como resultado de la continua
+                                activación neuronal que se produce al repetir
+                                acciones una y otra vez.</p>
+                        </div>
+                        <img src="./img/galeria-4.jpg" alt="neuronas cerebrales">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm">
+                        <img src="./img/galeria-5.jpg"
+                            alt="dibujo de silueta de persona meditando con dibujo de los siete chakras">
+                        <div class="card-body">
+                            <h3 class="card-title fs-5 fw-semibold">¿Qué son los mandalas?</h3>
+                            <p class="card-text"><strong>
+                                    Son diagramas simbólicos que en el
+                                    budismo representan la evolución del
+                                    universo respecto a un punto central.
+                                </strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm">
+                        <img src="./img/galeria-6.jpg" alt="lapices de colores sobre mandala dibujado en papel">
+                        <div class="card-body">
+                            <h3 class="card-title fs-5 fw-semibold">Dibujar y colorear mandalas</h3>
+                            <p class="card-text">Es posible alcanzar estados
+                                meditativos contemplando
+                                mandalas, dibujándolos o
+                                coloreándolos. <strong class="strong-sin-estilos">
+                                    Concentrar la atención en patrones y acciones repetitivas propicia la meditación
+                                    conciente, y ayuda a bajar los niveles de estrés.
+                                </strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Modal Carrito-->
+        <div class=" modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-fullscreen p-5">
+                <div class="row modal-content">
+                    <div class="col-12 modal-header">
+                        <h2 class="modal-title fw-bold" id="modalCarritoLabel">Carrito</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!--div que contiene todos los productos-->
+                    <div class="col-12 modal-body d-flex flex-column" id="contenedorItemCarrito">
+                        <!--div de cada producto-->
+          
+                    </div>
+                    <div class="row mx-3">
+                        <div class="col-6">
+                            <h2>Cantidad de productos: <span id="tuTotalCantidad"></span></h2>
+                        </div>
+                        <div class="col-6">
+                            <h2>Precio Total: $ <span class="tuTotal"></span></h2>
+                        </div>
+                    </div>
+
+                    <div class="col-12 modal-footer">
+                        <div>
+                            <button type="button" class="btn  shadow-sm btn-violet-gradient w-100" id="vaciarCarrito">Vaciar carrito</button>
+                        </div>
+                        <div>
+                            <a href="./checkout.html" role="button" class="btn  shadow-sm btn-violet-gradient w-100">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class=" modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-fullscreen p-5">
+                <div class="row modal-content">
+                    <div class="col-12 modal-header">
+                        <h2 class="modal-title fw-bold" id="exampleModalLabel">Imprimibles</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="col-12 modal-body d-flex" id="contenedorDescripLargo">
+                        
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </main>
+
+
+
+
+    <footer class="bg-dark-violet py-lg-3">
+        <div class="row container text-light mx-auto p-3 d-flex">
+            <div class="col-12 col-lg-4 p-2"><img class="d-block mx-auto img-fluid" src="./img/foto-ro.jpg"
+                    alt="foto Rocío">
+            </div>
+            <div class="col-12 col-lg-4 align-self-center datos-footer text-center">
+                <ul>
+                    <br><b>Alumnos:</b> </br>Pedro Gonzalez Chavez - Rocío Scotto</li>
+                    <li><b>Email:</b> pedro.gonzalez@davinci.edu.ar</br> rocio.scotto@davinci.edu.ar</li>
+                    <li><b>Comisión:</b> DWN2BV - 2022</li>
+                    <li><b>Materia:</b> Programación I - <b>Parcial:</b> II</li>
+                    <li><b>Prof:</b> Fabrizio Carlassara</li>
+                </ul>
+                <div class="text-center">
+                    <a href="https://github.com/pedroGch/p1-parcial-2-dwn2b">
+                        <div class="github"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                fill="whitesmoke" class="bi bi-github" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                            </svg></div> <span class="d-none">Github</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-12 col-lg-4 p-2">
+                <div class=""><img class="d-block mx-auto img-fluid align-self-center" src="./img/foto-pedro.jpg"
+                        alt="foto Pedro">
+                </div>
+              
+            </div>
+
+        </div>
+
+
+
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
+        async></script>
+
+    <script src="./js/CarritoClass.js"></script>
+    <script src="./js/ProductoClass.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
