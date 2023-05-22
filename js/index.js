@@ -2,23 +2,39 @@
  *  APELLIDOS: SCOTTO, GONZALEZ CHAVEZ
  */
 
+var arregloProductos = [];
 
-let arregloProductos = [];
+// async function cargarArray(){
+//     try {
+//         await fetch('https://fakestoreapi.com/products')
+//             .then(res=>res.json())
+//             .then(json=>{
+//                 arregloProductos = json
+//                 mostrarTodosLosProductos(json);
+//             })
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
 
 async function cargarArray(){
-    try {
-        await fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(json=>{
-                mostrarTodosLosProductos(json);
-            })
-    } catch (error) {
-        console.log(error)
+    const hayProductos = mostrarLocalStorageProductos();
+    if(hayProductos != null && hayProductos != undefined) {
+        arregloProductos = hayProductos;
+        mostrarTodosLosProductos(arregloProductos);
+    }else{
+        try {
+            await fetch('https://fakestoreapi.com/products')
+                .then(res=>res.json())
+                .then(json=>{
+                    arregloProductos = json;
+                    mostrarTodosLosProductos(json);
+                })
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
-
-cargarArray(arregloProductos)
-
 
 let contenedorProducto = document.querySelector("#productosTienda");
 let carritoDeCompras = new Carrito();
@@ -40,7 +56,7 @@ function agregarAlCarrito(idProducto){
         .then(json=>{
             let productoObject = new Producto(json.title, json.description, json.price, json.image, json.category, json.id, null);
             arregloProductos.push(productoObject);
-            carritoDeCompras.agregarProducto(producto);
+            carritoDeCompras.agregarProducto(productoObject);
     })
 
     actualizarLocalStorage();
@@ -123,7 +139,9 @@ function mostrarLocalStorage() {
     return JSON.parse(localStorage.getItem("productosCarrito"));
 }
 
-
+function mostrarLocalStorageProductos() {
+    return JSON.parse(localStorage.getItem("productos"));
+}
 
 document.querySelector("select").addEventListener("change", (e) => {
     
@@ -189,28 +207,11 @@ function mostrarOferta(categoria) {
     }, 10000);
 };
 
-
-
-
-
-
-    
-
-
-if(mostrarLocalStorage() != null && mostrarLocalStorage() != undefined) {
-
-    let productosExistentes = mostrarLocalStorage();
-
-    productosExistentes.forEach((p) => {
-        let productoObject = new Producto(p.nombre, p.descripcion, p.precio, p.urlImagen, p.categoria, p.id,p.descripcionlarga);
-        carritoDeCompras.agregarProducto(productoObject);
-    });
-    cantidadDeProductos.innerText = carritoDeCompras.cantidadDeProductos()
-    totalCompra ()
-    tuTotalCantidad.innerText = carritoDeCompras.cantidadDeProductos(); 
-    imprimirCarrito()
-}
-
-
-
-
+window.addEventListener('DOMContentLoaded', function () {
+    if (navigator.serviceWorker && navigator.serviceWorker.register){
+        navigator.serviceWorker.register('./../sw.js');
+    }else{
+        console.log("no puedo usar service worker");
+    }
+})
+cargarArray()
