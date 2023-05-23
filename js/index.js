@@ -4,18 +4,6 @@
 
 var arregloProductos = [];
 
-// async function cargarArray(){
-//     try {
-//         await fetch('https://fakestoreapi.com/products')
-//             .then(res=>res.json())
-//             .then(json=>{
-//                 arregloProductos = json
-//                 mostrarTodosLosProductos(json);
-//             })
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
 
 async function cargarArray(){
     const hayProductos = mostrarLocalStorageProductos();
@@ -28,7 +16,7 @@ async function cargarArray(){
                 .then(res=>res.json())
                 .then(json=>{
                     arregloProductos = json;
-                    mostrarTodosLosProductos(json);
+                    
                 })
         } catch (error) {
             console.log(error)
@@ -215,3 +203,4 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 })
 cargarArray()
+mostrarTodosLosProductos(arregloProductos);
