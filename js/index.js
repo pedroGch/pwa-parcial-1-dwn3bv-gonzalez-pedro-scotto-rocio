@@ -5,40 +5,40 @@
 var arregloProductos = [];
 
 
-async function cargarArray(){
-    const hayProductos = mostrarLocalStorageProductos();
-    if(hayProductos != null && hayProductos != undefined) {
-        arregloProductos = hayProductos;
-        mostrarTodosLosProductos(arregloProductos);
+async function cargarArray(){ //carga el array de productos
+    const hayProductos = mostrarLocalStorageProductos(); //chequea si hay productos en el local storage
+    if(hayProductos != null && hayProductos != undefined) { //si hay productos en el local storage los muestra
+        arregloProductos = hayProductos; 
+        mostrarTodosLosProductos(arregloProductos); 
     }else{
-        try {
-            await fetch('https://fakestoreapi.com/products')
-                .then(res=>res.json())
-                .then(json=>{
-                    arregloProductos = json;
+        try { //intento hacer la llamada a la api
+            await fetch('https://fakestoreapi.com/products') //llamada a la api
+                .then(res=>res.json()) //convierto la respuesta a json
+                .then(json=>{ //guardo el json en el array
+                    arregloProductos = json; 
                     
                 })
-        } catch (error) {
-            console.log(error)
+        } catch (error) { //si hay error lo muestro en consola
+            console.log(error) 
         }
     }
 }
 
-let contenedorProducto = document.querySelector("#productosTienda");
-let carritoDeCompras = new Carrito();
+let contenedorProducto = document.querySelector("#productosTienda"); 
+let carritoDeCompras = new Carrito(); 
 let cantidadDeProductos  = document.querySelector("#monstrarCantidad");
 let removerTodosLosProductos = document.querySelector("#removeAllProd");
 let tuTotalCantidad = document.querySelector("#tuTotalCantidad");
 
-function mostrarTodosLosProductos(arreglo){
+function mostrarTodosLosProductos(arreglo){ //muestra todos los productos en el contenedorProducto
 
-    arreglo.forEach((p)=>{
-        let productoObject = new Producto(p.title, p.description, p.price, p.image, p.category, p.id,null);
-        contenedorProducto.append(productoObject.imprimirProducto());
+    arreglo.forEach((p)=>{ //recorro el array de productos
+        let productoObject = new Producto(p.title, p.description, p.price, p.image, p.category, p.id,null); //creo un objeto producto
+        contenedorProducto.append(productoObject.imprimirProducto()); //imprimo el producto en el contenedor
     })
 }
 
-function agregarAlCarrito(idProducto){
+function agregarAlCarrito(idProducto){ //agrega un producto al carrito
     fetch('https://fakestoreapi.com/products/'+ idProducto)
         .then(res=>res.json())
         .then(json=>{
@@ -47,16 +47,16 @@ function agregarAlCarrito(idProducto){
             carritoDeCompras.agregarProducto(productoObject);
     })
 
-    actualizarLocalStorage();
+    actualizarLocalStorage(); //actualizo el local storage  
 
-    cantidadDeProductos.innerText = carritoDeCompras.cantidadDeProductos(); 
-    tuTotalCantidad.innerText = carritoDeCompras.cantidadDeProductos(); 
+    cantidadDeProductos.innerText = carritoDeCompras.cantidadDeProductos();  //actualizo la cantidad de productos en el carrito
+    tuTotalCantidad.innerText = carritoDeCompras.cantidadDeProductos();     
     
     imprimirCarrito()
 
 }
 
-function imprimirCarrito(){
+function imprimirCarrito(){ //imprime el carrito en el modal
     let contenedorItemProducto = document.querySelector("#contenedorItemCarrito");
 
     let misProductos = carritoDeCompras.devolverProductos();
@@ -67,7 +67,7 @@ function imprimirCarrito(){
     });
 }
 
-function quitarProductoDelCarrito (idProducto,element){
+function quitarProductoDelCarrito (idProducto,element){ //quita un producto del carrito
 
     let contenedorItem = element.parentNode.parentNode;
     
@@ -82,7 +82,7 @@ function quitarProductoDelCarrito (idProducto,element){
 
 }
 
-function totalCompra (){
+function totalCompra (){ //muestra el total de la compra en el carrito
     let tuTotal = document.querySelector(".tuTotal");
     tuTotal.innerText = carritoDeCompras.mostrarPrecioTotalDeLaCompra(); 
 }
@@ -100,7 +100,7 @@ vaciarCarrito.addEventListener("click", function(){
 
 });
 
-function mostrarModalDetalle(idProd){
+function mostrarModalDetalle(idProd){ //muestra el modal con el detalle del producto
     try {
         fetch('https://fakestoreapi.com/products/'+ idProd)
             .then(res=>res.json())
@@ -118,24 +118,24 @@ function mostrarModalDetalle(idProd){
 /**
  * Local Storage
  */
-function actualizarLocalStorage() {
+function actualizarLocalStorage() { //actualiza el local storage con el carrito de compras
     localStorage.setItem("productosCarrito", JSON.stringify(carritoDeCompras.devolverProductos()));
     //localStorage.setItem("productosCarrito", JSON.stringify(carritoDeCompras));
 }
 
-function mostrarLocalStorage() {
+function mostrarLocalStorage() { //muestra el local storage
     return JSON.parse(localStorage.getItem("productosCarrito"));
 }
 
-function mostrarLocalStorageProductos() {
+function mostrarLocalStorageProductos() { //muestra el local storage
     return JSON.parse(localStorage.getItem("productos"));
 }
 
-document.querySelector("select").addEventListener("change", (e) => {
+document.querySelector("select").addEventListener("change", (e) => { //evento del select de categorias
     
     let categoria = e.target.value;
     if (categoria != "todas"){
-        let filtrado = arregloProductos.filter((p) => p.categoria.includes(categoria));
+        let filtrado = arregloProductos.filter((p) => p.categoria.includes(categoria)); //filtro el array de productos por categoria
     
         contenedorProducto.replaceChildren();
         mostrarTodosLosProductos(filtrado);
