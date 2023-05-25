@@ -54,10 +54,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end text-end p-2" id="navbarNavAltMarkup">
                         <div class="navbar-nav ">
-                            <a class="nav-link active text-light" aria-current="page" href="/index.html">Inicio</a>
-                            <a class="nav-link text-light" href="#nosotros">Nosotros</a>
-                            <a class="nav-link text-light" href="#productos">Productos</a>
-                            <a class="nav-link text-light" href="#tienda">Tienda</a>
+                            <a class="nav-link active text-light" aria-current="page" href="index.html">Inicio</a>
                             <a class="nav-link text-light" href="#galeria">Galería</a>
                         </div>
                     </div>
@@ -88,8 +85,8 @@
                 </div>
                 <div class="col-12">
                     <div class="col-12 my-3">
-                        <label for="tipo-producto"><b class="text-dark-violet fs-4">Categoría:</b></label>
-                        <select name="tipo-producto" id="tipo-producto">
+                        <label for="tipo-producto"><b class="d-none text-dark-violet fs-4">Categoría:</b></label>
+                        <select name="tipo-producto" id="tipo-producto" class="d-none">
                             <option value="todas">Todas</option>
                             <option value="mandala">Mandala</option>
                             <option value="infantil">Infantil</option>
@@ -237,7 +234,7 @@
                         <div>
                             <button type="button" class="btn  shadow-sm btn-violet-gradient w-100" id="vaciarCarrito">Vaciar carrito</button>
                         </div>
-                        <div>
+                        <div class="d-none">
                             <a href="./checkout.html" role="button" class="btn  shadow-sm btn-violet-gradient w-100">Comprar</a>
                         </div>
                     </div>
