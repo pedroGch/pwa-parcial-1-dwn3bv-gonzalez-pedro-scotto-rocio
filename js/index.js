@@ -19,6 +19,8 @@ async function cargarArray(){ //carga el array de productos
                 .then(res=>res.json()) //convierto la respuesta a json
                 .then(json=>{ //guardo el json en el array
                     arregloProductos = json; 
+                    localStorage.setItem("productos", JSON.stringify(arregloProductos));
+
                     
                 })
         } catch (error) { //si hay error lo muestro en consola
