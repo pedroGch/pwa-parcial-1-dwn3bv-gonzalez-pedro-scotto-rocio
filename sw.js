@@ -4,7 +4,19 @@ const archivos = ['/', //archivos a cachear
                 'css/styles.css',
                 'js/CarritoClass.js',
                 'js/ProductoClass.js',
-                'js/index.js'
+                'js/index.js',
+                'img/background-form-lg.jpg',
+                'img/background-form.jpg',
+                'img/foto-pedro.jpg',
+                'img/foto-ro.jpg',
+                'img/logo.jpg',
+                'img/galeria-1.jpg',
+                'img/galeria-2.jpg',
+                'img/galeria-3.jpg',
+                'img/galeria-4.jpg',
+                'img/galeria-5.jpg',
+                'img/galeria-6.jpg',
+
 
 ];
 
@@ -16,8 +28,8 @@ self.addEventListener('install', precatching =>{ //instalacion del sw
         caches 
             .open(nombreCache) //abre el cache
             .then(cache => { 
-              console.log() 
-              cache.addAll(archivos); //agrega los archivos al cache
+                console.log() 
+                cache.addAll(archivos); //agrega los archivos al cache
             })
     )
 })
