@@ -10,16 +10,15 @@ var arregloProductos = [];
  */
 async function cargarArray(){ //carga el array de productos
     const hayProductos = mostrarLocalStorageProductos(); //chequea si hay productos en el local storage
-    if(hayProductos != null && hayProductos != undefined) { //si hay productos en el local storage los muestra
-        arregloProductos = hayProductos; 
-        mostrarTodosLosProductos(arregloProductos); 
+    if(hayProductos) { //si hay productos en el local storage los muestra
+        mostrarTodosLosProductos(hayProductos); 
     }else{
         try { //intento hacer la llamada a la api
             await fetch('https://fakestoreapi.com/products') //llamada a la api
                 .then(res=>res.json()) //convierto la respuesta a json
                 .then(json=>{ //guardo el json en el array
-                    arregloProductos = json; 
-                    localStorage.setItem("productos", JSON.stringify(arregloProductos));
+                    mostrarTodosLosProductos(json); //muestra todos los productos
+                    localStorage.setItem("productos", JSON.stringify(json));
 
                     
                 })
@@ -40,7 +39,7 @@ let tuTotalCantidad = document.querySelector("#tuTotalCantidad");
  * @param {*} arreglo  array de productos
  */
 function mostrarTodosLosProductos(arreglo){ 
-
+    arregloProductos = arreglo;
     arreglo.forEach((p)=>{ //recorro el array de productos
         let productoObject = new Producto(p.title, p.description, p.price, p.image, p.category, p.id,null); //creo un objeto producto
         contenedorProducto.append(productoObject.imprimirProducto()); //imprimo el producto en el contenedor
@@ -239,4 +238,4 @@ window.addEventListener('DOMContentLoaded', function () { //carga del sw
     }
 })
 cargarArray() //carga el array de productos
-mostrarTodosLosProductos(arregloProductos); //muestra todos los productos
+
