@@ -12,12 +12,12 @@ const archivos = ['/', //archivos a cachear
 
 self.addEventListener('install', precatching =>{ //instalacion del sw
     self.skipWaiting(); //esto elimina el sw existente y activa el nuevo
-    precatching.waitUntil(
-        caches
-            .open(nombreCache)
-            .then(cache => {
-              console.log()
-              cache.addAll(archivos);
+    precatching.waitUntil(  //espera a que se cargue el cache
+        caches 
+            .open(nombreCache) //abre el cache
+            .then(cache => { 
+              console.log() 
+              cache.addAll(archivos); //agrega los archivos al cache
             })
     )
 })

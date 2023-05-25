@@ -4,7 +4,10 @@
 
 var arregloProductos = [];
 
-
+/**
+ * Carga el array de productos
+ * @returns {Promise<void>} array de productos
+ */
 async function cargarArray(){ //carga el array de productos
     const hayProductos = mostrarLocalStorageProductos(); //chequea si hay productos en el local storage
     if(hayProductos != null && hayProductos != undefined) { //si hay productos en el local storage los muestra
@@ -30,7 +33,11 @@ let cantidadDeProductos  = document.querySelector("#monstrarCantidad");
 let removerTodosLosProductos = document.querySelector("#removeAllProd");
 let tuTotalCantidad = document.querySelector("#tuTotalCantidad");
 
-function mostrarTodosLosProductos(arreglo){ //muestra todos los productos en el contenedorProducto
+/**
+ * Muestra todos los productos en el contenedorProducto
+ * @param {*} arreglo  array de productos
+ */
+function mostrarTodosLosProductos(arreglo){ 
 
     arreglo.forEach((p)=>{ //recorro el array de productos
         let productoObject = new Producto(p.title, p.description, p.price, p.image, p.category, p.id,null); //creo un objeto producto
@@ -38,7 +45,11 @@ function mostrarTodosLosProductos(arreglo){ //muestra todos los productos en el 
     })
 }
 
-function agregarAlCarrito(idProducto){ //agrega un producto al carrito
+/**
+ * Agrega un producto al carrito
+ * @param {*} idProducto  id del producto
+ */
+function agregarAlCarrito(idProducto){ 
     fetch('https://fakestoreapi.com/products/'+ idProducto)
         .then(res=>res.json())
         .then(json=>{
@@ -56,7 +67,11 @@ function agregarAlCarrito(idProducto){ //agrega un producto al carrito
 
 }
 
-function imprimirCarrito(){ //imprime el carrito en el modal
+/**
+ * Imprime el carrito en el modal
+ * 
+ */
+function imprimirCarrito(){ 
     let contenedorItemProducto = document.querySelector("#contenedorItemCarrito");
 
     let misProductos = carritoDeCompras.devolverProductos();
@@ -67,7 +82,12 @@ function imprimirCarrito(){ //imprime el carrito en el modal
     });
 }
 
-function quitarProductoDelCarrito (idProducto,element){ //quita un producto del carrito
+/**
+ * Quita un producto del carrito
+ * @param {*} idProducto  id del producto
+ * @param {*} element  elemento html
+ */
+function quitarProductoDelCarrito (idProducto,element){ 
 
     let contenedorItem = element.parentNode.parentNode;
     
@@ -82,7 +102,10 @@ function quitarProductoDelCarrito (idProducto,element){ //quita un producto del 
 
 }
 
-function totalCompra (){ //muestra el total de la compra en el carrito
+/**
+ * Muestra el total de la compra en el carrito
+ */
+function totalCompra (){ 
     let tuTotal = document.querySelector(".tuTotal");
     tuTotal.innerText = carritoDeCompras.mostrarPrecioTotalDeLaCompra(); 
 }
@@ -100,7 +123,11 @@ vaciarCarrito.addEventListener("click", function(){
 
 });
 
-function mostrarModalDetalle(idProd){ //muestra el modal con el detalle del producto
+/**
+ * Muestra el modal con el detalle del producto
+ * @param {*} idProd  id del producto
+ */
+function mostrarModalDetalle(idProd){ 
     try {
         fetch('https://fakestoreapi.com/products/'+ idProd)
             .then(res=>res.json())
@@ -116,18 +143,26 @@ function mostrarModalDetalle(idProd){ //muestra el modal con el detalle del prod
 }
 
 /**
- * Local Storage
+ * Actualiza el local storage con el carrito de compras
  */
-function actualizarLocalStorage() { //actualiza el local storage con el carrito de compras
+function actualizarLocalStorage() {
     localStorage.setItem("productosCarrito", JSON.stringify(carritoDeCompras.devolverProductos()));
     //localStorage.setItem("productosCarrito", JSON.stringify(carritoDeCompras));
 }
 
-function mostrarLocalStorage() { //muestra el local storage
-    return JSON.parse(localStorage.getItem("productosCarrito"));
+/**
+ * Devuelve el local storage
+ * @returns local storage    
+ */
+function mostrarLocalStorage() { 
+    return JSON.parse(localStorage.getItem("productosCarrito")); 
 }
 
-function mostrarLocalStorageProductos() { //muestra el local storage
+/**
+ * Muestra el local storage
+ * @returns local storage
+ */
+function mostrarLocalStorageProductos() { 
     return JSON.parse(localStorage.getItem("productos"));
 }
 
@@ -152,9 +187,8 @@ document.querySelector("select").addEventListener("change", (e) => { //evento de
 
 
 /**
- * FUNCION PARA MOSTRAR OFERTA (ES LLAMADA CON EL SELECT DE CATEG)
+ * Funcion para mostrar oferta (es llamada con el select de categoria)
  */
-
 function mostrarOferta(categoria) { //muestra la oferta en el contenedorOferta
 
     document.querySelector("#contenedorOferta").innerText = "";
