@@ -155,7 +155,7 @@ document.querySelector("select").addEventListener("change", (e) => {
  * FUNCION PARA MOSTRAR OFERTA (ES LLAMADA CON EL SELECT DE CATEG)
  */
 
-function mostrarOferta(categoria) {
+function mostrarOferta(categoria) { //muestra la oferta en el contenedorOferta
 
     document.querySelector("#contenedorOferta").innerText = "";
 
@@ -166,7 +166,7 @@ function mostrarOferta(categoria) {
     let cardBody = document.createElement("div");
     cardBody.className = "card-body";
 
-    switch (categoria) {
+    switch (categoria) { //cambio el texto del body de la card segun la categoria
         case "mandala":
             cardBody.innerText = "¡SOLO POR HOY! 30% de descuento en la segunda unidad llevando dos packs MANDALAS imprimibles, iguales o diferentes";
             break;
@@ -184,23 +184,23 @@ function mostrarOferta(categoria) {
     }
     
 
-    cardOferta.append(cardBody);
+    cardOferta.append(cardBody); //agrego el body a la card
 
-    document.querySelector("#contenedorOferta").append(cardOferta);
+    document.querySelector("#contenedorOferta").append(cardOferta); //agrego la card al contenedor
 
-    setTimeout(() => {
+    setTimeout(() => { //elimino la card a los 10 segundos
 
         document.querySelector("#oferta").remove();
 
     }, 10000);
 };
 
-window.addEventListener('DOMContentLoaded', function () {
-    if (navigator.serviceWorker && navigator.serviceWorker.register){
-        navigator.serviceWorker.register('./../sw.js');
+window.addEventListener('DOMContentLoaded', function () { //carga del sw
+    if (navigator.serviceWorker && navigator.serviceWorker.register){ //chequea si el navegador soporta sw
+        navigator.serviceWorker.register('./../sw.js'); //registra el sw
     }else{
         console.log("no puedo usar service worker");
     }
 })
-cargarArray()
-mostrarTodosLosProductos(arregloProductos);
+cargarArray() //carga el array de productos
+mostrarTodosLosProductos(arregloProductos); //muestra todos los productos
