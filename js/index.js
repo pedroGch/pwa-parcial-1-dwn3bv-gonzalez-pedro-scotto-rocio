@@ -34,6 +34,45 @@ let cantidadDeProductos  = document.querySelector("#monstrarCantidad");
 let removerTodosLosProductos = document.querySelector("#removeAllProd");
 let tuTotalCantidad = document.querySelector("#tuTotalCantidad");
 
+let divbotonDescarga = document.getElementById('divbotonDescarga');
+let botonDescarga = document.getElementById('botonDescarga');
+let accionInstalar;
+
+
+// Funcion para el boton que dispara el pop-up de instalación
+function instalarApp() {
+    if (accionInstalar) {
+        accionInstalar.prompt();
+        accionInstalar.userChoice
+            .then(respuesta => {
+                if (respuesta.outcome == 'accepted') {
+                    console.log('El usuario aceptó instalar la app');
+                    divbotonDescarga.style.display = 'none';
+                } else {
+                    console.log('El usuario no aceptó instalar la app');
+                }
+            })
+    }
+}
+
+function mostrarBtnInstalar() {
+    if (botonDescarga != undefined) {
+        divbotonDescarga.style.display = 'block';
+        botonDescarga.addEventListener('click', instalarApp)
+    }
+}
+
+// Evito que el pop-up salte al entrar a la web
+window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    accionInstalar = e;
+    mostrarBtnInstalar();
+})
+
+
+
+
+
 /**
  * Muestra todos los productos en el contenedorProducto
  * @param {*} arreglo  array de productos

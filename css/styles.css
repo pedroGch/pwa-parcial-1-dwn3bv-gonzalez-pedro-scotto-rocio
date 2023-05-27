@@ -53,6 +53,15 @@ body {
     box-shadow: 0 .125rem .25rem red;
 }
 
+#botonDescarga {
+    background-color: #64ffda;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    font-weight: 600;
+}
+
 #logo {
     width: 120px;
     height: 34px;
